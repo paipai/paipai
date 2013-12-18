@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Test mosaic + tableau</title>
+		<style>
+			a, a:visited, a:active, a:hover {
+				color: #fff;
+				font-family: Arial;
+				font-size: 16px;
+				text-decoration: none;
+			}
+
+			label a, input {
+				position: absolute;
+				bottom: 6px;				
+			}
+			label a {		
+				background: #fff;	
+				opacity: 0.8;
+				left: 0px;
+				padding-left: 4px;
+				width: 100%;			
+			}
+
+			input {
+				right: 4px;
+			}
+
+			.axs_hidden {
+			    background-color: #FF0000;
+			    height: 0;
+			    overflow: hidden;
+			    position: absolute;
+			    width: 0;
+			}
+
+			.container {
+				width: 250px;
+				height: 300px;
+			}
+
+			table {
+				width: 500px;				
+			}
+
+			table, td, th {
+				border: 1px solid;
+				border-collapse: collapse;
+			}
+
+			th {
+				background: #333;
+				color: #fff;
+				border: 1px solid #333;
+			}
+
+			.col1 {width: 200px;}
+			.col2 {width: 100px;}
+			.col3 {width: 200px;}
+
+			.content {
+				height: 119px;
+				width: 520px;
+				overflow: hidden;
+			}
+
+			.content table td {
+				border-top: 0;
+			}
+			
+			.selected td {
+				background-color: #ff7900;
+				color: #fff;
+				border: 1px solid #000;
+			}
+		</style>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', init, false);
+			$ = function(arg) {				
+				return document.querySelectorAll(arg);
+			}
+			
+			function init() {
+				
+				document.body.addEventListener("keydown", function(e) {
+
+					var selected = $("tr.selected")[0];
+					var newSelected = false;
+					
+				
+					if (e.keyCode == 40) {
+						newSelected = selected.nextSibling;
+					} else if (e.keyCode == 38) {
+						newSelected = selected.previousSibling;
+					}
+
+					if (newSelected.nodeName == "TR") {
+						selected.classList.remove("selected");
+						newSelected.classList.add("selected");
+					}
+					
+				})
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<table>
+			<thead>
+				<tr>
+					<th class="col1">
+						titre
+						<a href="#">&#9650;<span class="axs_hidden">tri croissant</span></a>
+					</th>
+					<th class="col2">
+						artiste
+						<a href="#"><span class="axs_hidden">trier cette colonne</span></a>
+					</th>
+					<th class="col3">
+						album
+						<a href="#"><span class="axs_hidden">trier cette colonne</span></a>
+					</th>
+				</tr>		
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+
+		<div class="content">
+			<table>
+				<thead class="axs_hidden">
+					<tr><th abbr="titre">mon titre</th><th abbr="artiste">artiste</th><th abbr="album">album</th></tr>
+				</thead>
+				<tbody>
+					<tr class="selected"><td class="col1">Still Can't Sleep</td><td class="col2">Zenzile</td><td class="col3">Living in monochrome</td><tr><td>All Day Breakfast</td><td>Zenzile</td><td>Living in monochrome</td><tr><td>Rising Fist</td><td>Zenzile</td><td>Living in monochrome</td><tr><td>Reflection</td><td>Zenzile</td><td>Living in monochrome</td></tr><tr><td>Sham</td><td>Zenzile</td><td>Living in monochrome</td></tr><tr><td>Giant Undertow</td><td>Zenzile</td><td>Living in monochrome</td></tr><tr><td>Pipe dream 1</td><td>Zenzile</td><td>Living in monochrome</td></tr><tr><td>All Day Breakfast</td><td>Zenzile</td><td>Living in monochrome</td><tr><td>Rising Fist</td><td>Zenzile</td><td>Living in monochrome</td><tr><td>Reflection</td><td>Zenzile</td><td>Living in monochrome</td></tr><tr><td>Sham</td><td>Zenzile</td><td>Living in monochrome</td></tr><tr><td>Giant Undertow</td><td>Zenzile</td><td>Living in monochrome</td></tr><tr><td>Pipe dream 1</td><td>Zenzile</td><td>Living in monochrome</td></tr><tr><td>All Day Breakfast</td><td>Zenzile</td><td>Living in monochrome</td><tr><td>Rising Fist</td><td>Zenzile</td><td>Living in monochrome</td><tr><td>Reflection</td><td>Zenzile</td><td>Living in monochrome</td></tr><tr><td>Sham</td><td>Zenzile</td><td>Living in monochrome</td></tr><tr><td>Giant Undertow</td><td>Zenzile</td><td>Living in monochrome</td></tr><tr><td>Pipe dream 1</td><td>Zenzile</td><td>Living in monochrome</td></tr><tr><td>All Day Breakfast</td><td>Zenzile</td><td>Living in monochrome</td><tr><td>Rising Fist</td><td>Zenzile</td><td>Living in monochrome</td><tr><td>Reflection</td><td>Zenzile</td><td>Living in monochrome</td></tr><tr><td>Sham</td><td>Zenzile</td><td>Living in monochrome</td></tr><tr><td>Giant Undertow</td><td>Zenzile</td><td>Living in monochrome</td></tr><tr><td>Pipe dream 1</td><td>Zenzile</td><td>Living in monochrome</td></tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+
+</html>
+
